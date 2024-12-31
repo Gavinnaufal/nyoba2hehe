@@ -1,0 +1,148 @@
+<header class="navi">
+    <ul class="navbar">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#pendidikan" class="nav-link">Pendidikan</a></li>
+      <li><a href="#skill-2" class="nav-link">Skill</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="main">
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+  </header>
+  
+  <style>
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      padding: 28px 30%;
+      transition: all 0.5s ease;
+    }
+  
+    .navbar {
+      font-family: "Poppins", serif;
+      display: flex;
+    }
+  
+    .navbar a {
+      color: var(--text-color);
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 5px 0;
+      margin: 0 30px;
+      transition: all 0.5s ease;
+    }
+  
+    .navbar a:hover {
+      color: #ff5722;
+    }
+  
+    .navbar a.active {
+      color: #ff5722;
+      font-weight: bold;
+    }
+  
+    .main {
+      display: flex;
+      align-items: center;
+    }
+  
+    #menu-icon {
+      font-size: 35px;
+      cursor: pointer;
+      z-index: 101;
+      margin-top: -3px;
+      display: none;
+      margin-left: 25vw;
+    }
+  
+    @media (max-width: 1280px) {
+      .navbar a {
+        padding: 5px 0;
+        margin: 0 20px;
+      }
+    }
+  
+    @media (max-width: 1080px) {
+      .navbar a {
+        padding: 2.5px 0;
+        margin: 0 10px;
+      }
+    }
+  
+    @media (max-width: 780px) {
+      #menu-icon {
+        display: block;
+        margin-left: 50vw;
+      }
+      .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 270px;
+        height: 29vh;
+        background: #ff5722;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+      }
+      .navbar.open {
+        right: 2%;
+      }
+      .navbar a {
+        display: block;
+        margin: 6px 0;
+        padding: 0 20px;
+        transition: all 0.5s ease;
+      }
+  
+      .navbar a:hover {
+        color: #fff;
+        transform: translateY(5px);
+      }
+      .navbar a.active {
+        color: #fff;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      window.addEventListener("scroll", () => {
+        let current = "";
+  
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 50) {
+            current = section.getAttribute("id");
+          }
+        });
+  
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+    });
+  </script>
+  
+  <!-- Example of sections to test navigation -->
+  <section id="home" style="height: 100vh; background-color: lightblue;">Home Section</section>
+  <section id="pendidikan" style="height: 100vh; background-color: lightgreen;">Pendidikan Section</section>
+  <section id="skill-2" style="height: 100vh; background-color: lightcoral;">Skill Section</section>
+  <section id="contact" style="height: 100vh; background-color: lightgoldenrodyellow;">Contact Section</section>
+  
